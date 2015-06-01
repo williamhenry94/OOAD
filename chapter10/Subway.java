@@ -41,7 +41,7 @@ public class Subway
 	            connectingStations = (List) network.get(station1);
 	            if (!connectingStations.contains(station2)) {
 	                connectingStations.add(station2);
-	               
+	                
 	            }
 	            
 	        } else {
@@ -51,7 +51,6 @@ public class Subway
 	          
 	        }
     	}
-       
         
 //        System.out.println(connectingStations);
     }
@@ -268,6 +267,13 @@ public class Subway
 			}
     	}
 //    	return null;
+    }
+    public Station getStation(String station){
+    	for (int i=0; i<stations.size();i++){
+    		if(((Station)stations.get(i)).getName().equals(station)){
+    			return (Station)stations.get(i);
+    		}
+    	}return null;
     }
   
     
