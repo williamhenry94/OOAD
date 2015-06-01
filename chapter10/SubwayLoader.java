@@ -33,10 +33,13 @@ public class SubwayLoader
             subway.addStation(currentLine);
             currentLine = reader.readLine();
         }
+        if(currentLine.length()>0){
+        	return false;
+        }
         return true;
     }
     
-    public void loadLine(Subway subway, BufferedReader reader, String lineName) throws IOException {
+    public Subway loadLine(Subway subway, BufferedReader reader, String lineName) throws IOException {
         String station1Name, station2Name;
         station1Name = reader.readLine();
         station2Name = reader.readLine();
@@ -46,10 +49,15 @@ public class SubwayLoader
             station1Name = station2Name;
             station2Name = reader.readLine();
         }
+        return subway;
+        
+        
     }
+    
     public void brokeStation(String station){
     	subway.removeStation(station);
     }
+    
 //    public void fixStation(String station){
 //    	Station s=subway.getStation(station);
 //    	if(s!=null){
@@ -59,6 +67,7 @@ public class SubwayLoader
     public void brokeLine(String name){
     	subway.removeLine(name);
     }
+    
 //    public void fixLine(String station1,String station2){
 //    	Connection conn=subway.getConnection(new Station (station1), new Station(station2));
 //    	if(conn!=null){
