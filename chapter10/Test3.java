@@ -13,7 +13,7 @@ public class Test3 {
 	public void test() {
 		try {
         	SubwayLoader loader = new SubwayLoader();
-			Subway objectville = loader.loadFromFile(new File("C:/william/workspace/Subway/src/chapter10/ObjectvilleSubways.txt"));
+			Subway objectville = loader.loadFromFile(new File("C:/william/workspace/Subway/src/chapter10/ObjectvilleSubway.txt"));
 			boolean x=objectville.addStation("XHTML Expressway");
 			assertEquals(false, x);
 			boolean y=objectville.addStation("XHTML");
