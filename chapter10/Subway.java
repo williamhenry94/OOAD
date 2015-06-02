@@ -121,16 +121,18 @@ public class Subway
 	                for (Iterator k = currentNeighbors.iterator(); k.hasNext(); ) {
 	                    Station neighbor = (Station) k.next();
 //	                    System.out.println(neighbor.getName());
-	                    if(getConnection(currentStation, neighbor).getStatus()==true){
-		                    if (neighbor.equals(end)) {
-		                        reachableStations.add(neighbor);
-		                        previousStations.put(neighbor, currentStation);
-		                        break searchLoop;
-		                    } else if (!reachableStations.contains(neighbor) ) {
-		                        reachableStations.add(neighbor);
-		                        tmpNextStations.add(neighbor);
-		                        previousStations.put(neighbor, currentStation);
-		                    }
+	                    if(neighbor.getStatus()==true){
+		                    if(getConnection(currentStation, neighbor).getStatus()==true){
+			                    if (neighbor.equals(end)) {
+			                        reachableStations.add(neighbor);
+			                        previousStations.put(neighbor, currentStation);
+			                        break searchLoop;
+			                    } else if (!reachableStations.contains(neighbor) ) {
+			                        reachableStations.add(neighbor);
+			                        tmpNextStations.add(neighbor);
+			                        previousStations.put(neighbor, currentStation);
+			                    }
+	                    }
                     }
                 }
             }
@@ -149,7 +151,7 @@ public class Subway
 //            System.out.println(nextStations);
 //            System.out.println(neighbors);
             
-            if(getConnection(station, keyStation).getStatus()==true){
+            if(getConnection(station, keyStation)!=null && getConnection(station, keyStation).getStatus()==true){
             	route.add(0, getConnection(station, keyStation));
             }
             if (start.equals(station)) {
@@ -169,8 +171,12 @@ public class Subway
 //            System.out.println(connection.getStatus());
             Station one = connection.getStation1();
             Station two = connection.getStation2();
-            if ((station1.equals(one)) && station2.equals(two)) {
-                return connection;
+            try{
+            	if ((station1.equals(one)) && station2.equals(two)) {
+            		return connection;
+            	}
+            }catch(Exception e){
+            	
             }
         }
         return null;
