@@ -12,7 +12,8 @@ public class SubwayPrinter
     }
     
     public void printDirections(List route) {
-        Connection connection = (Connection) route.get(0);
+    	try{
+    		Connection connection = (Connection) route.get(0);
 //        try{
 	        String currentLine = connection.getLineName();
 	        String previousLine = currentLine;
@@ -33,8 +34,8 @@ public class SubwayPrinter
 	            }
 	        }
 	        out.println("Get off at " + connection.getStation2().getName() + " and enjoy yourself!");
-//	    }catch(Exception e){
-//	    	System.out.println("Line is unavailable");
-//	    }
+	    }catch(Exception e){
+	    	out.println("The station you have choosen or the line that passed the station is unavailable");
+	    }
     }
 }
