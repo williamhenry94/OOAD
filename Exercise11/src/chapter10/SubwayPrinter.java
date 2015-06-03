@@ -18,24 +18,24 @@ public class SubwayPrinter
 	        String currentLine = connection.getLineName();
 	        String previousLine = currentLine;
 	        
-	        out.println("Start out at " + connection.getStation1().getName() + ".");
-	        out.println("Get on the " + currentLine + " heading towards " + connection.getStation2().getName() + ".");
+	        out.println("Start out at " + connection.getStation1().getName() + ".<br>");
+	        out.println("Get on the " + currentLine + " heading towards " + connection.getStation2().getName() + ".<br>");
 	        
 	        for (int i = 1; i < route.size(); i++) {
 	            connection = (Connection) route.get(i);
 	            currentLine = connection.getLineName();
 	            if (currentLine.equals(previousLine)) {
-	                out.println("  Continue past  " + connection.getStation1().getName() + "...");
+	                out.println("  Continue past  " + connection.getStation1().getName() + "...<br>");
 	            }
 	            else {
-	                out.println("When you get to " + connection.getStation1().getName() + ", get off the " + previousLine + ".");
-	                out.println("Switch over to the " + currentLine + ", heading towards " + connection.getStation2().getName() + ".");
+	                out.println("When you get to " + connection.getStation1().getName() + ", get off the " + previousLine + ".<br>");
+	                out.println("Switch over to the " + currentLine + ", heading towards " + connection.getStation2().getName() + ".<br>");
 	                previousLine = currentLine;
 	            }
 	        }
-	        out.println("Get off at " + connection.getStation2().getName() + " and enjoy yourself!");
+	        out.println("Get off at " + connection.getStation2().getName() + " and enjoy yourself!<br>");
 	    }catch(Exception e){
-	    	out.println("The station you have choosen or the line that passed the station is unavailable");
+	    	out.println("The station you have choosen or the line that passed the station is unavailable<br>");
 	    }
     }
 }
